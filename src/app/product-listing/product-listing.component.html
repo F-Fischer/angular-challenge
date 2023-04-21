@@ -10,7 +10,9 @@
 <div class="drink-category"></div>
 <div class="product-list">
     <div class="product-list-item" *ngFor="let product of products">
-        <app-product-item></app-product-item>
+        <a [routerLink]="[product.id + '-' + product.brand.toLowerCase().split(' ').join('')]">
+            <app-product-item></app-product-item>
+        </a>
     </div>
 </div>
 
