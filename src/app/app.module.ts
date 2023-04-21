@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListingComponent } from './product-listing/product-listing.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { SharedModule } from './shared/shared.module';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListingComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
