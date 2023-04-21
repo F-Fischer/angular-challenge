@@ -1,4 +1,16 @@
-<div>welcome back</div>
+<div class="user-greeting">
+    <div class="name">
+        Hi Mr. Michael,
+    </div>
+    <div class="greeting">
+        Welcome Back!
+    </div>
+</div>
 <app-search-bar></app-search-bar>
 <div class="drink-category"></div>
+<div class="product-list">
+    <div class="product-list-item" *ngFor="let product of products">
+        <app-product-item></app-product-item>
+    </div>
+</div>
 
