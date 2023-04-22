@@ -1,6 +1,15 @@
-<div class="product-item">
-    <div class="product-name">name</div>
-    <div class="product-img">img</div>
-    <div class="product-price">price</div>
-    <div class="add-button">add</div>
+<div class="product-item relative"
+    [ngClass]="{
+        'rounded-r-lg': index % 2 === 0,
+        'rounded-l-lg': index % 2 === 1
+    }"
+    >
+    <div class="product-name text-center leading-4 p-4">{{product.brand}}</div>
+    <div class="product-img text-center">
+        <div>
+            img
+        </div>
+    </div>
+    <div class="product-price absolute left-0 bottom-0 leading-4 p-4">{{price}}</div>
+    <div class="add-button absolute right-0 bottom-0 p-4">add</div>
 </div>

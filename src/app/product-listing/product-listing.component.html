@@ -8,11 +8,15 @@
 </div>
 <app-search-bar></app-search-bar>
 <div class="drink-category"></div>
-<div class="product-list">
-    <div class="product-list-item" *ngFor="let product of products">
-        <a [routerLink]="[product.id + '-' + product.brand.toLowerCase().split(' ').join('')]">
-            <app-product-item></app-product-item>
-        </a>
-    </div>
+<div class="product-list grid grid-cols-2 gap-4 content-end">
+    <!-- <div class="product-list-item" *ngFor="let product of products">
+        <a [routerLink]="[product.id + '-' + product.brand.toLowerCase().split(' ').join('')]"> -->
+            <app-product-item 
+                *ngFor="let product of products; index as i" 
+                [product]="product"
+                [index]="i"
+                ></app-product-item>
+        <!-- </a>
+    </div> -->
 </div>
 
