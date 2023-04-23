@@ -1,22 +1,21 @@
-<div class="user-greeting">
-    <div class="name">
+<div class="user-greeting pt-5 pb-5">
+    <div class="text-base">
         Hi Mr. Michael,
     </div>
-    <div class="greeting">
+    <div class="text-xl">
         Welcome Back!
     </div>
 </div>
 <app-search-bar></app-search-bar>
-<div class="drink-category"></div>
-<div class="product-list grid grid-cols-2 gap-4 content-end">
-    <!-- <div class="product-list-item" *ngFor="let product of products">
-        <a [routerLink]="[product.id + '-' + product.brand.toLowerCase().split(' ').join('')]"> -->
-            <app-product-item 
-                *ngFor="let product of products; index as i" 
-                [product]="product"
-                [index]="i"
-                ></app-product-item>
-        <!-- </a>
-    </div> -->
+<app-category-filter></app-category-filter>
+<div>
+    <div class="text-lg">Populer</div>
+    <div class="product-list grid grid-cols-2 gap-4 content-end">
+        <app-product-item 
+            *ngFor="let product of products; index as i" 
+            [product]="product"
+            [index]="i"
+            ></app-product-item>
+    </div>
 </div>
 

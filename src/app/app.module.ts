@@ -9,13 +9,15 @@ import { SharedModule } from './shared/shared.module';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MockStockPriceInterceptor } from './interceptors/mock-stock-price.interceptor';
+import { CategoryFilterComponent } from './product-listing/category-filter/category-filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListingComponent,
     ProductDetailComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    CategoryFilterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,18 @@
-<div class="product-item relative"
+<div class="product-item relative cursor-pointer" 
+    [routerLink]="[product.id + '-' + product.brand.toLowerCase().split(' ').join('')]"
     [ngClass]="{
-        'rounded-r-lg': index % 2 === 0,
-        'rounded-l-lg': index % 2 === 1
+        'border-right': index % 2 === 0,
+        'border-left': index % 2 === 1
     }"
     >
     <div class="product-name text-center leading-4 p-4">{{product.brand}}</div>
     <div class="product-img text-center">
-        <div>
-            img
+        <div class="flex align-middle justify-center">
+            <img src="assets/images/{{product.brand.toLowerCase().split(' ').join('') + '.png'}}" alt="" srcset="">
         </div>
     </div>
-    <div class="product-price absolute left-0 bottom-0 leading-4 p-4">{{price}}</div>
-    <div class="add-button absolute right-0 bottom-0 p-4">add</div>
+    <div class="product-price absolute left-0 bottom-0 leading-4 p-4">$ {{price/100}}</div>
+    <div class="add-button absolute right-0 bottom-0 p-4 flex align-middle justify-center">
+        <img src="assets/icons/+.png" alt="">
+    </div>
 </div>
