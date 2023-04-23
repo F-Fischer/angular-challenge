@@ -23,8 +23,19 @@ export class ProductDetailComponent {
       // @ts-ignore
       this.productBrand = idAndBrand[1];
 
-      this.product = this.productService.getProducts().find(product => product.id === this.productId);
+      // @ts-ignore
+      this.product = this.productService.getProductById(parseInt(idAndBrand[0]));
       console.log(this.product);
+
+      // const url = '/api/stockprice/' + this.product.skus[0].code;
+      // this.priceSubscription = interval(5000)
+      //   .pipe(
+      //     switchMap(() => this.http.get(url))
+      //   )
+      // .subscribe((data: any) => {
+      //   console.log(data);
+      //   this.price = data.price;
+      // });
     });
 
     

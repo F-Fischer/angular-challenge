@@ -29,7 +29,7 @@ export class ProductItemComponent {
       )
     .subscribe((data: any) => {
       console.log(data);
-      this.price = data.price 
+      this.price = data.price;
     });
   }
 }

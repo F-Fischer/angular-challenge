@@ -1,18 +1,26 @@
-<div class="flex flex-col">
+<div class="flex flex-col rounded-xl">
     <div class="flex justify-center p-10 h-1/3">
         <img src="assets/images/{{productBrand}}.png" alt="">
     </div>
     <div class="flex flex-col bg-white h-2/3">
-        <div class="flex justify-between">
-            <div class="product-item-title"></div>
-            <div class="product-item-price"></div>
+        <div class="flex flex-col p-2">
+            <div class="flex justify-between">
+                <div class="product-item-title">{{product.brand}}</div>
+                <div class="product-item-price">Price</div>
+            </div>
+            <div>
+                Origin: {{product.origin}} | Stock: 456
+            </div>
         </div>
         
-        <div class="product-item-description">
-
+        <div class="product-item-description p-2">
+            <div class="mb-1">Description</div>
+            <div>{{product.information}}</div>
         </div>
-        <div class="product-item-sizes">
-
+        <div class="flex">
+            <div class="" *ngFor="let sku of product.skus; index as i">
+                {{sku.name}}
+            </div>
         </div>
         <div class="product-item-actions p-1">
             <div></div>
