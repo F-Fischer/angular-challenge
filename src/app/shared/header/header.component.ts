@@ -10,13 +10,25 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent {
   isHomePage: boolean | undefined;
   private routeSubscription: Subscription | undefined;
+  private routeSubscription2: Subscription | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.routeSubscription = this.route.params.subscribe(params => {
       console.log('header checking route', params);
     });
+
+    this.routeSubscription2 = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isHomePage = event.url === '/';
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.routeSubscription2?.unsubscribe();
+    this.routeSubscription?.unsubscribe();
   }
 }
 

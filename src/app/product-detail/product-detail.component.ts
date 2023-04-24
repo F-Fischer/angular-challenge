@@ -11,6 +11,7 @@ export class ProductDetailComponent {
   productId: any;
   productBrand: any;
   product: any;
+  selectedSize: any;
 
   constructor(private route: ActivatedRoute, private productService: ProductService) { }
 

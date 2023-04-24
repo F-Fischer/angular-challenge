@@ -1,11 +1,15 @@
 <div class="flex justify-between">
     <div>
-        <div class="rounded-xl bg-white h-10 w-10"></div>
+        <div *ngIf="isHomePage" class="rounded-xl bg-white h-10 w-10"></div>
+        <div *ngIf="!isHomePage" class="rounded-xl bg-white h-10 w-10" [routerLink]="['/']">
+            back
+        </div>
     </div>
     <div class="heading text">
-
+        <h1 *ngIf="!isHomePage" class="text-2xl">Details</h1>
     </div>
     <div>
-        <img class="h-12 rounded-full" src="assets/icons/profile.jpg" alt="">
+        <img *ngIf="isHomePage" class="h-12 rounded-full" src="assets/icons/profile.jpg" alt="">
+        <div *ngIf="!isHomePage" class="rounded-xl bg-white h-10 w-10"></div>
     </div>
 </div>
