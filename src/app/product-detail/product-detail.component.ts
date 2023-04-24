@@ -48,6 +48,18 @@ export class ProductDetailComponent {
     });
   }
 
+  onSkuClick(sku: any) {
+    console.log(sku);
+  }
+
+  addToCart() {
+    console.log('addToCart');
+  }
+
+  onShopingBagButton() {
+    console.log('onShopingBagButton');
+  }
+
   ngOnDestroy() {
     this.priceSubscription?.unsubscribe();
   }
