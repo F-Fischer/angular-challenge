@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
-import { Subscription, interval, switchMap } from 'rxjs';
+import { Subscription, interval, switchMap, startWith } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -13,8 +13,9 @@ export class ProductDetailComponent {
   productId: any;
   productBrand: any;
   price: any;
+  stock: any;
   product: any;
-  selectedSize: any;
+  selectedSku: any;
   private priceSubscription: Subscription | undefined;
 
   constructor(
@@ -35,12 +36,14 @@ export class ProductDetailComponent {
 
       const url = '/api/stockprice/' + this.product.skus[0].code;
       this.priceSubscription = interval(5000)
-        .pipe(
+      .pipe(
+          startWith(0),
           switchMap(() => this.http.get(url))
         )
       .subscribe((data: any) => {
         console.log(data);
         this.price = data.price;
+        this.stock = data.stock;
       });
     });
   }

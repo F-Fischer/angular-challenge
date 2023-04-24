@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { StockPriceService } from '../services/stock-price.service';
 import { HttpClient } from '@angular/common/http';
-import { Subscription, interval, switchMap } from 'rxjs';
+import { Subscription, interval, startWith, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-product-item',
@@ -25,6 +25,7 @@ export class ProductItemComponent {
     const url = '/api/stockprice/' + this.product.skus[0].code;
     this.priceSubscription = interval(5000)
       .pipe(
+        startWith(0), // Add this line to execute the request immediately
         switchMap(() => this.http.get(url))
       )
     .subscribe((data: any) => {

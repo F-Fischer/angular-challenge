@@ -6,10 +6,10 @@
         <div class="flex flex-col p-2">
             <div class="flex justify-between">
                 <div class="product-item-title text-lg">{{product.brand}}</div>
-                <div class="product-item-price text-lg">Price</div>
+                <div class="product-item-price text-lg">$ {{price ? price/100 : 0}}</div>
             </div>
             <div class="text-base text-gray-400">
-                Origin: {{product.origin}} | Stock: 456
+                Origin: {{product.origin}} | Stock: {{ stock ? stock : 0 }}
             </div>
         </div>
         
