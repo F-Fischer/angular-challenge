@@ -1,5 +1,5 @@
 <div class="user-greeting pt-5 pb-5">
-    <div class="text-base">
+    <div class="text-base text-gray-400">
         Hi Mr. Michael,
     </div>
     <div class="text-xl">
@@ -9,7 +9,10 @@
 <app-search-bar></app-search-bar>
 <app-category-filter></app-category-filter>
 <div>
-    <div class="text-lg">Populer</div>
+    <div class="flex justify-between">
+        <div class="text-lg">Populer</div>
+        <div class="text-base text-gray-400">See All</div>
+    </div>
     <div class="product-list grid grid-cols-2 gap-4 content-end">
         <app-product-item 
             *ngFor="let product of products; index as i" 

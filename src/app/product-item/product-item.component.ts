@@ -32,4 +32,8 @@ export class ProductItemComponent {
       this.price = data.price;
     });
   }
+
+  ngOnDestroy() {
+    this.priceSubscription.unsubscribe();
+  }
 }

@@ -4,10 +4,15 @@ import { ProductListingComponent } from './product-listing/product-listing.compo
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
-  { path: '', component: ProductListingComponent },
+  { 
+    path: '',
+    component: ProductListingComponent,
+    data: { headingText: '' }
+  },
   {
     path: ':productId-:productBrand',
-    component: ProductDetailComponent
+    component: ProductDetailComponent,
+    data: { headingText: 'Details' }
   }
 ];
 
