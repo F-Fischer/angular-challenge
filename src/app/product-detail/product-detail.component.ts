@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
-import { Subscription, interval, switchMap, startWith } from 'rxjs';
+import { Subscription, BehaviorSubject, switchMap, startWith } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -17,11 +17,14 @@ export class ProductDetailComponent {
   product: any;
   selectedSku: any;
   private priceSubscription: Subscription | undefined;
+  private selectedSkuSubject: BehaviorSubject<any>;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private http: HttpClient) { }
+    private http: HttpClient) {
+      this.selectedSkuSubject = new BehaviorSubject<any>(null);
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {  
@@ -34,22 +37,29 @@ export class ProductDetailComponent {
       this.product = this.productService.getProductById(parseInt(idAndBrand[0]));
       console.log(this.product);
 
-      const url = '/api/stockprice/' + this.product.skus[0].code;
-      this.priceSubscription = interval(5000)
-      .pipe(
-          startWith(0),
-          switchMap(() => this.http.get(url))
+      this.priceSubscription = this.selectedSkuSubject
+        .pipe(
+          startWith(null),
+          switchMap((sku) => {
+            if (sku) {
+              const url = '/api/stockprice/' + sku.code;
+              return this.http.get(url);
+            }
+            this.selectedSku = this.product.skus[0];
+            return this.http.get('/api/stockprice/' + this.selectedSku.code);
+          })
         )
-      .subscribe((data: any) => {
-        console.log(data);
-        this.price = data.price;
-        this.stock = data.stock;
-      });
+        .subscribe((data: any) => {
+          console.log(data);
+          this.price = data.price;
+          this.stock = data.stock;
+        });
     });
   }
 
   onSkuClick(sku: any) {
-    console.log(sku);
+    this.selectedSku = sku;
+    this.selectedSkuSubject.next(sku);
   }
 
   addToCart() {
@@ -63,6 +73,4 @@ export class ProductDetailComponent {
   ngOnDestroy() {
     this.priceSubscription?.unsubscribe();
   }
-
-
 }
