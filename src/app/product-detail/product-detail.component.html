@@ -8,14 +8,14 @@
                 <div class="product-item-title text-lg">{{product.brand}}</div>
                 <div class="product-item-price text-lg">$ {{price ? price/100 : 0}}</div>
             </div>
-            <div class="text-base text-gray-400">
+            <div class="text-sm text-gray-400">
                 Origin: {{product.origin}} | Stock: {{ stock ? stock : 0 }}
             </div>
         </div>
         
         <div class="product-item-description p-2">
             <div class="mb-1 text-lg">Description</div>
-            <div>{{product.information}}</div>
+            <div class="text-sm text-gray-400">{{product.information}}</div>
         </div>
         <div class="flex grid-cols-2 justify-around">
             <div
