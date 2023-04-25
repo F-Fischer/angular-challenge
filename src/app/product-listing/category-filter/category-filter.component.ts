@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./category-filter.component.less']
 })
 export class CategoryFilterComponent {
-
+  onSeeAllClick() {
+    console.log('onSeeAllClickCategoryFilter');
+  }
 }

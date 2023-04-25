@@ -16,4 +16,8 @@ export class ProductListingComponent {
     this.products = this.productService.getProducts();
     console.log(this.products);
   }
+
+  onSeeAllItemsClick() {
+    console.log('onSeeAllItemsClick');
+  }
 }
